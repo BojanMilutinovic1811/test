@@ -1,0 +1,19 @@
+<% include ../partials/header.ejs %>
+
+<div class="row sites">
+        <% campgrounds.forEach(campground => { %>
+
+            <div class="card smallCards my-3" style="width: 18rem;">
+                <img class="card-img-top" src="<%= campground.image %>" alt="Card image cap">
+                   <div class="card-body text-center">
+                      <h4 class="card-title"><%= campground.location %></h4>
+                       <p class="card-text text-center"><%= campground.description.substring(0,30) %>...</p>
+                       <a href="/campgrounds/<%=campground._id %>" class="btn btn-sm btn-primary">Read More...</a>
+                   </div>
+            </div>
+
+        <% }) %>
+
+</div>
+
+<% include ../partials/footer.ejs %>

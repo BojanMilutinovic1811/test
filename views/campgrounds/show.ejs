@@ -1,0 +1,39 @@
+<% include ../partials/header.ejs %>
+
+<div class="card largeCards m-3 w-80">
+        <img class="card-img-top" src="<%=campground.image %>" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title"><%= campground.location %></h5>
+          <p class="card-text"><%= campground.description %></p>
+          <p class="card-text">Post created by: <%= campground.author.username %></p>
+          <p class="card-text"><small class="text-muted">Post created on: <%= campground.created.toDateString() %></small></p>
+          <% if(currentUser && campground.author.id.equals(currentUser._id)) { %>
+            <a class="btn btn-success btn-sm" href='/campgrounds/<%=campground.id%>/edit'>Update</a>
+            <form class='d-inline' action="/campgrounds/<%= campground.id %>?_method=delete" method="post">
+              <button class="btn btn-sm btn-danger">Delete</button>
+            </form>
+          <% } %>
+         
+          <a class="btn ml-4 btn-warning float-right btn-sm" href='/campgrounds'>Back to Campgrounds</a>
+          <br>
+          <a class="btn btn-primary px-4 ml-1 mt-3 btn-sm" href='/campgrounds/<%=campground.id%>/comments/new'>Leave Comment</a>
+          <hr>
+          <ul class="list-group">
+            <% campground.comments.forEach(comment => { %>
+            <li class="list-group-item comment-list"><%= comment.text %> - <span class="lead"><%= comment.author.username %></span>
+          <% if(currentUser && comment.author.id.equals(currentUser._id)) { %>
+
+              <span class="float-right">
+                <form action="/campgrounds/<%= campground.id %>/comments/<%= comment.id %>?_method=delete" method="post">
+                  <input type="submit" value="delete">
+                </form>
+                <a href="/campgrounds/<%= campground.id %>/comments/<%= comment.id %>/edit">update</a>
+              </span></li>
+              <% } %>
+
+            <% }) %> 
+          </ul>
+        </div>
+</div>
+
+<% include ../partials/footer.ejs %>

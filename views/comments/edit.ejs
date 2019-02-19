@@ -1,0 +1,22 @@
+<% include ../partials/header.ejs %>
+
+
+    <div class="row mt-5">
+
+        <form action="/campgrounds/<%= campgroundId %>/comments/<%= comment.id %>?_method=put" method="post" class="col-md-6 p-5 mx-auto">
+                <h4 class="mb-4">Update comment</h4>
+                    <div class="form-group">
+                        <label for="commentText">Description:</label>
+                        <textarea class="form-control" name='comment[text]' id="commentText"><%= comment.text %></textarea>
+                    </div>
+                    <div class="row mt-3 justify-content-around">
+                        <input type="submit" class="btn btn-sm btn-success col-md-3" value="Submit">
+                        <a href='/campgrounds/<%= campgroundId %>' class=" col-md-3 btn btn-sm btn-danger">Cancel</a>
+                    </div>
+            
+                    </div>
+        </form> 
+</div>
+
+
+<% include ../partials/footer.ejs %>

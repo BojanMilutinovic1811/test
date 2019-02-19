@@ -1,0 +1,39 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100vh;
+}
+
+.sites {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.container {
+    flex-grow: 3;
+}
+
+.smallCards {
+    transition: .4s;
+}
+
+.smallCards:hover {
+    transform: scale(1.1);
+}
+
+.largeCards img {
+    max-height: 75vh;
+}
+
+.comment-list:hover {
+    background: lightgray; 
+    font-size: 105%;
+    color: black;
+}
+
+.comment-list {
+    transition: .5s;
+}
+
